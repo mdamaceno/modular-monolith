@@ -1,0 +1,17 @@
+{
+  "name": "bun-js",
+  "module": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot run index.js"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "elysia": "^0.6.22"
+  }
+}
