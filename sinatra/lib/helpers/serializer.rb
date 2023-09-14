@@ -1,7 +1,7 @@
 module Helpers
   module Serializer
     def self.serialize(hash)
-      { data: hash }.to_json
+      { data: hash }
     end
   end
 end

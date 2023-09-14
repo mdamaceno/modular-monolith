@@ -7,7 +7,7 @@ module Components
       def self.extended(base)
         base.class_exec do
           post '' do
-            Serializer.serialize(CreateOrder.new.call)
+            Serializer.serialize(CreateOrder.new.call).to_json
           end
         end
       end
