@@ -1,23 +1,40 @@
 package marketing
 
 import (
+    "net/http"
+
     "github.com/gin-gonic/gin"
     "app/components/marketing/dto"
     "app/components/marketing/use_case"
+    "app/helpers"
 )
-
-type Component struct {}
 
 var requestBody dto.RequestBody
 
-func (comp *Component) Index(ctx *gin.Context) string {
-    return usecase.AnnounceSomething(&requestBody)
-}
+func Controller(router *gin.RouterGroup) error {
+    router.GET("/announces", func(c *gin.Context) {
+        result, err := usecase.AnnounceSomething(&requestBody)
 
-func (comp *Component) AnnounceSomething(ctx *gin.Context) (string, error) {
-    if err := ctx.BindJSON(&requestBody); err != nil {
-        return "", err
-    }
+        if err != nil {
+            c.JSON(http.StatusBadRequest, helpers.SerializeError(err.Error(), http.StatusBadRequest))
+            return
+        }
 
-    return usecase.AnnounceSomething(&requestBody), nil
+        c.JSON(http.StatusOK, helpers.SerializeData(result))
+        return
+    })
+
+    router.POST("/announces", func(c *gin.Context) {
+        result, err := usecase.AnnounceSomething(&requestBody)
+
+        if err != nil {
+            c.JSON(http.StatusBadRequest, helpers.SerializeError(err.Error(), http.StatusBadRequest))
+            return
+        }
+
+        c.JSON(http.StatusOK, helpers.SerializeData(result))
+        return
+    })
+
+    return nil
 }

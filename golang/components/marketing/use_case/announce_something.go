@@ -6,10 +6,10 @@ import (
     "app/components/marketing/dto"
 )
 
-func AnnounceSomething(body *dto.RequestBody) string {
+func AnnounceSomething(body *dto.RequestBody) (string, error) {
     fmt.Println(body)
     s := "Marketing AnnounceSomething"
     fmt.Println(s)
 
-    return s
+    return s, nil
 }
