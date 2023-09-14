@@ -1,8 +1,16 @@
 module Components
   module Order
-    def self.create_order(request: nil)
-      puts request.inspect
-      UseCase::CreateOrder.new.call
+    module Controller
+      include Components::Order::UseCase
+      include Helpers
+
+      def self.extended(base)
+        base.class_exec do
+          post '' do
+            Serializer.serialize(CreateOrder.new.call)
+          end
+        end
+      end
     end
   end
 end

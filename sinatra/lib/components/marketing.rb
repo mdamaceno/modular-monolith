@@ -1,12 +1,20 @@
 module Components
   module Marketing
-    def self.index
-      UseCase::AnnounceSomething.new.call
-    end
+    module Controller
+      include Components::Marketing::UseCase
+      include Helpers
 
-    def self.announce_something(request: nil)
-      puts request.inspect
-      UseCase::AnnounceSomething.new.call
+      def self.extended(base)
+        base.class_exec do
+          get '/announces' do
+            Serializer.serialize(AnnounceSomething.new.call)
+          end
+
+          post '/announces' do
+            Serializer.serialize(AnnounceSomething.new.call)
+          end
+        end
+      end
     end
   end
 end
