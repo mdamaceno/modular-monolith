@@ -17,7 +17,7 @@ class Application < Sinatra::Base
     extend Components::Marketing::Controller
   end
 
-  namespace '/orders' do
+  namespace '/order' do
     extend Components::Order::Controller
   end
 end

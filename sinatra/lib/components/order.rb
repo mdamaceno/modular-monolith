@@ -6,7 +6,7 @@ module Components
 
       def self.extended(base)
         base.class_exec do
-          post '' do
+          post '/checkout' do
             Serializer.serialize(CreateOrder.new.call).to_json
           end
         end
