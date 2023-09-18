@@ -1,7 +1,7 @@
-// Purpose: Greet the world
+// Purpose: Announce something
 // Here is where you write your business code
 
 export default () => {
   // Do something here
-  return "Hello World!";
+  return "Announce something";
 };

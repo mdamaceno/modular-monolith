@@ -1,7 +1,7 @@
-// Purpose: Do something
+// Purpose: Create order
 // Here is where you write your business code
 
 export default () => {
   // Do something here
-  return "Something made!";
+  return "Creating order";
 }
