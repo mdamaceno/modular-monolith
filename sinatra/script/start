@@ -3,4 +3,4 @@
 bundle check || BUNDLE_JOBS=4 bundle install
 
 echo "Starting.."
-bundle exec puma -C puma.rb
+bundle exec rerun "bundle exec puma -C puma.rb"
