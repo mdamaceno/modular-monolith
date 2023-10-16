@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ./script/start
+    ports:
+      - 8080
+    tty: true
+    volumes:
+      - .:/app
+      - box:/box
+
+volumes:
+  box:
